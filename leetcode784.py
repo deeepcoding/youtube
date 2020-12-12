@@ -1,24 +1,24 @@
 class Solution:
     def letterCasePermutation(self, S: str):
-        ret = []
-        li = []
+        res = []
+        my_str = []
 
         def make_list():
             for char in S:
-                li.append(char)
+                my_str.append(char)
 
         def backtrack(i):
-            if i == len(li):
-                ret.append("".join(li))
+            if i == len(my_str):
+                res.append("".join(my_str))
                 return
-            if '0' <= li[i] <= '9':
+            if '0' <= my_str[i] <= '9':
                 backtrack(i + 1)
             else:
-                li[i] = li[i].lower()
+                my_str[i] = my_str[i].lower()
                 backtrack(i + 1)
-                li[i] = li[i].upper()
+                my_str[i] = my_str[i].upper()
                 backtrack(i + 1)
 
         make_list()
         backtrack(0)
-        return ret
+        return res
